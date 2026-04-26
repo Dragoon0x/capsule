@@ -30,7 +30,7 @@ Capsule fixes this with a single mental model:
 
 > **Context becomes a first-class, reusable artifact.**
 
-You build named "capsules" — bundles of typed items (text, code, URLs, images, files, voice notes). Capsules live in a searchable library, accumulate over time, and compile into structured XML or Markdown prompts you copy into any LLM. Variables, secrets-detection, history, multi-tab safety, and PWA-offline come built in.
+A **capsule** is a named folder of mixed content — notes, code snippets, links, images, files, voice transcripts. Build *"Auth refactor"* once with the relevant code and decisions; reuse it every time you brief an LLM about that subsystem. Capsules sit in a searchable library that grows with you. When you're ready to ask, pick the capsules you need (one or many), fill in any `{{variables}}`, and the app compiles everything into a structured XML or Markdown prompt you paste into Claude / ChatGPT / anything else. Secrets-detection before copy, prompt history, multi-tab safety, and offline-installable PWA — all included.
 
 It runs entirely in your browser. **No account. No server. No data leaves your device.**
 
