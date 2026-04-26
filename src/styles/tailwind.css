@@ -1,0 +1,214 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Surfaces */
+    --background: 36 33% 98%;
+    --foreground: 24 10% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 24 10% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 24 10% 10%;
+
+    /* Brand */
+    --primary: 28 95% 53%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Neutrals */
+    --secondary: 30 8% 95%;
+    --secondary-foreground: 24 10% 18%;
+    --muted: 30 8% 95%;
+    --muted-foreground: 24 5% 42%;
+    --accent: 30 12% 92%;
+    --accent-foreground: 24 10% 18%;
+
+    /* Status */
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --warning: 32 95% 44%;
+
+    /* Lines + focus */
+    --border: 30 8% 88%;
+    --input: 30 8% 88%;
+    --ring: 28 95% 53%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 24 10% 7%;
+    --foreground: 36 20% 95%;
+    --card: 24 10% 9%;
+    --card-foreground: 36 20% 95%;
+    --popover: 24 10% 8%;
+    --popover-foreground: 36 20% 95%;
+
+    --primary: 28 96% 58%;
+    --primary-foreground: 24 30% 8%;
+
+    --secondary: 24 6% 14%;
+    --secondary-foreground: 36 20% 92%;
+    --muted: 24 6% 14%;
+    --muted-foreground: 25 5% 64%;
+    --accent: 24 6% 16%;
+    --accent-foreground: 36 20% 92%;
+
+    --destructive: 0 65% 56%;
+    --destructive-foreground: 0 0% 100%;
+    --warning: 36 90% 60%;
+
+    --border: 24 6% 17%;
+    --input: 24 6% 17%;
+    --ring: 28 96% 58%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'cv11', 'ss01', 'kern';
+    font-variant-numeric: tabular-nums;
+  }
+
+  :focus {
+    outline: none;
+  }
+  :focus-visible {
+    @apply ring-2 ring-ring ring-offset-2 ring-offset-background;
+    border-radius: calc(var(--radius) - 2px);
+    outline: none;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.22);
+    color: hsl(var(--foreground));
+  }
+
+  /* Scrollbars */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 999px;
+    border: 2px solid hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .kbd {
+    @apply inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded border border-border bg-muted px-1.5 font-mono text-[10.5px] font-medium text-muted-foreground;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* highlight.js — minimal token theme that sources from CSS vars (light + dark). */
+.hljs {
+  color: hsl(var(--foreground));
+  background: transparent;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-section,
+.hljs-link,
+.hljs-doctag {
+  color: hsl(var(--primary));
+}
+.hljs-string,
+.hljs-attr,
+.hljs-template-variable,
+.hljs-variable {
+  color: hsl(142 64% 38%);
+}
+.dark .hljs-string,
+.dark .hljs-attr,
+.dark .hljs-template-variable,
+.dark .hljs-variable {
+  color: hsl(142 56% 60%);
+}
+.hljs-number,
+.hljs-meta,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-built_in,
+.hljs-builtin-name {
+  color: hsl(210 60% 45%);
+}
+.dark .hljs-number,
+.dark .hljs-meta,
+.dark .hljs-symbol,
+.dark .hljs-bullet,
+.dark .hljs-built_in,
+.dark .hljs-builtin-name {
+  color: hsl(210 70% 70%);
+}
+.hljs-comment,
+.hljs-quote,
+.hljs-deletion {
+  color: hsl(var(--muted-foreground));
+  font-style: italic;
+}
+.hljs-title,
+.hljs-class .hljs-title,
+.hljs-function .hljs-title,
+.hljs-name {
+  color: hsl(280 50% 45%);
+  font-weight: 500;
+}
+.dark .hljs-title,
+.dark .hljs-class .hljs-title,
+.dark .hljs-function .hljs-title,
+.dark .hljs-name {
+  color: hsl(280 65% 75%);
+}
+.hljs-emphasis {
+  font-style: italic;
+}
+.hljs-strong {
+  font-weight: 600;
+}
